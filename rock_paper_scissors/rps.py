@@ -2,8 +2,22 @@
 
 import sys
 
+def move_combinations(prev, n, all_results):
+  #add R, or P, or S to prev
+  if n == 0:
+    all_results.append(prev)
+    return
+
+  moves = ['rock', 'paper', 'scissors']
+  for move in moves:
+    move_combinations(prev + [move], n - 1, all_results)
+
+  return all_results
+
 def rock_paper_scissors(n):
-  pass 
+  results = []
+  move_combinations([], n, results)
+  return results 
 
 
 if __name__ == "__main__":
@@ -12,3 +26,4 @@ if __name__ == "__main__":
     print(rock_paper_scissors(num_plays))
   else:
     print('Usage: rps.py [num_plays]')
+
